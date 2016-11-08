@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kalender 0.5</title>
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link href='css/kalender.css' rel='stylesheet' />
+<link href='css/cssKal05.css' rel='stylesheet' />
+<!--<link href="jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet">
+<script src='jquery-ui-1.12.1/jquery-ui.js'></script>
+<script src='jquery-ui-1.12.1/jquery-ui.min.js'></script>
+
+<script type="text/javascript" src="jquery-ui-1.12.1/jquery.min.js"></script>
+<script type="text/javascript" src="jquery-ui-1.12.1/jquerycalendar/jquery.calendar.js"></script>
+<link rel="stylesheet" media="screen" href="jquery-ui-1.12.1/jquerycalendar/jquery.calendar.css"/>-->
+
+<script src="angular.js"></script>
+<script src="angular-route.js"</script>
+<script src="dateTime.js"></script>
+<script src="myApp.js"></script>
+<script src="myCtrl.js"></script>
+
+<center><h1>Huvudsidan</h1></center>
+<body ng-app="app" ng-controller="mainController">	
+<center>
+<ul class="nav">
+<hr color="purple">
+<a href="#/"><button id="main"class="buttonAdd">Mainpage</button></a>
+<a href="#/employee"><button id="employee"class="buttonAdd">Employee</button></a>
+<hr color="purple">
+</ul>
+
+</center>
+
+<!--<div ng-app="myEmployeeList" ng-controller="myCtrl" align="center" id="calendarBody">-->
+
+<div ng-view></div>
+
+</body>
+</html>
