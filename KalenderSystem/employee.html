@@ -25,25 +25,6 @@ name="myForm" novalidate>
 ng-disabled="myForm.empNumber.$invalid || myForm.name.$dirty">--><!--&& myForm.name.$invalid || myForm.name.$dirty">-->
 <!--ng-disabled="myForm.empNumber.$ng-untouched && myForm.empNumber.$invalid &&
 myForm.name.$ng-untouched && myForm.name.$invalid"-->
-<script>
-function showEmployees() 
-{
-    var emp = document.getElementById('allEmps');
-	emp.style.display = 'block';
-	document.getElementById("btnEmployees").disabled = true;
-	var buttonEmployees = document.getElementById("btnEmployees");
-	buttonEmployees.style.cursor = "not-allowed";
-	var tableEmps = document.getElementById('tableEmps');
-	tableEmps.style.border = "1px solid";
-	
-    /*if (emp.style.display === 'block') {
-        emp.style.display = 'none';
-    } else {
-        emp.style.display = 'block';
-    }*/
-}
-
-</script>
 
 <div align="center" id="calendarBody">
 <hr class="hr">
@@ -105,7 +86,7 @@ function showEmployees()
 		ng-click="addEvents()"/>
 		
 		<input type="button" id="btnEmployees" value="Show Employees" 
-		ng-click="getUsers()" ng-model="users" class="buttonAdd" onclick="showEmployees()" />
+		ng-click="showEmployees()" ng-model="users" class="buttonAdd" />
 		
 		<input type="button" id="btnDepartment" value="Show Departments" 
 		ng-click="showDepartments()" ng-model="departments" class="buttonAdd" />
@@ -142,7 +123,7 @@ function showEmployees()
 		<tbody style="display:none" id="allEvents">
 		<td>All events</td>
 		<td><label>Search: <input ng-model="searchTextEvents" /></label></td>
-		<tr ng-repeat="ev in events | filter:searchTextEvents">
+		<tr ng-repeat="ev in events track by ev.id | filter:searchTextEvents">
 		<td>{{ev.id + ": " + "Begindate: " + ev.begins_at + ", " + "Endate: " + ev.ends_at}}
 		<span class="pointer" ng-click="deleteEvents(ev.id)">
 		<input type="button" id="remove" value="Remove" ng-click="deleteEvents(ev.id)" class="pointer" class="myButton" /></span></td>

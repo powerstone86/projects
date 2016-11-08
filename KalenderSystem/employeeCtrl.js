@@ -12,23 +12,23 @@ app.controller("employeeController", function($scope, dateFilter, $http)
 		
     });*/
 
-	getUsers(); // anropar funktionen för att hämta alla användare när man startar sidan
+	getUsers(); // anropar funktionen fï¿½r att hï¿½mta alla anvï¿½ndare nï¿½r man startar sidan
 	getDepartments();
 	getEvents();
 
     //$scope.employees = [];
 	//$scope.item = {};
 	//var newItem = {};
-    $scope.addItems = function () // funktion som lägger till anställda
+    $scope.addItems = function () // funktion som lï¿½gger till anstï¿½llda
 	{
 		/*newItem.number = $scope.item.number;
 		newItem.name = $scope.item.name;
 		newItem.date = $scope.date;
 		newItem.attended = $scope.checkboxModel;
 		if($scope.checkboxModel == null)
-			alert("Får inte vara null");
+			alert("Fï¿½r inte vara null");
 			
-        $scope.employees.push(newItem);*/ // lägger till anställd i först i arrayen
+        $scope.employees.push(newItem);*/ // lï¿½gger till anstï¿½lld i fï¿½rst i arrayen
 		
 		//model = newItem.date;
     }
@@ -40,6 +40,23 @@ app.controller("employeeController", function($scope, dateFilter, $http)
     ],
 		selectedOption: {name: 'Select a option'} //This sets the default value of the select in the ui
     };*/
+
+	$scope.showEmployees = function() 
+	{
+		var emp = document.getElementById('allEmps');
+		emp.style.display = 'block';
+		document.getElementById("btnEmployees").disabled = true;
+		var buttonEmployees = document.getElementById("btnEmployees");
+		buttonEmployees.style.cursor = "not-allowed";
+		var tableEmps = document.getElementById('tableEmps');
+		tableEmps.style.border = "1px solid";
+		
+		/*if (emp.style.display === 'block') {
+			emp.style.display = 'none';
+		} else {
+			emp.style.display = 'block';
+		}*/
+	}
 	
 	//function showEvents()
 	$scope.showEvents = function()
@@ -87,21 +104,21 @@ app.controller("employeeController", function($scope, dateFilter, $http)
 		depTable.style.border = "0px solid";
 	}
 	
-	/*$scope.orderByMe = function(u) // funktion som sorterar när man klickar på tabellen
+	/*$scope.orderByMe = function(u) // funktion som sorterar nï¿½r man klickar pï¿½ tabellen
 	{
         $scope.myOrderBy  = u;
     }
-    $scope.removeItem = function (x) // funktion som tar bort från tabellen
+    $scope.removeItem = function (x) // funktion som tar bort frï¿½n tabellen
 	{
         $scope.employees.splice(x, 1);
     }*/
 	
-	$scope.users = []; // array för alla anställda i en array från databasen
+	$scope.users = []; // array fï¿½r alla anstï¿½llda i en array frï¿½n databasen
 	$scope.departments = [];
-	$scope.events = []; // array för alla events i en array från databasen
-	$scope.eventType = []; // array för alla event-typer från databasen
+	$scope.events = []; // array fï¿½r alla events i en array frï¿½n databasen
+	$scope.eventType = []; // array fï¿½r alla event-typer frï¿½n databasen
 
-	// Lägg till ett event
+	// Lï¿½gg till ett event
 	$scope.addEvents = function()
 	{
 		if(document.getElementById("beginDate").value == "" || document.getElementById("endDate").value == "" ||
@@ -123,7 +140,7 @@ app.controller("employeeController", function($scope, dateFilter, $http)
 			 function(response)
 			{
 				console.log(response);
-				$scope.events = response.data; // Visar data från databasen om anropet lyckades
+				$scope.events = response.data; // Visar data frï¿½n databasen om anropet lyckades
 			},
 			function(response)
 			{				
@@ -136,19 +153,19 @@ app.controller("employeeController", function($scope, dateFilter, $http)
 		}
 	}
 
-	$scope.changedEmpValue = function(empID) /* när man valt employee från DropDown listan visas IDn för den employeen */
+	$scope.changedEmpValue = function(empID) /* nï¿½r man valt employee frï¿½n DropDown listan visas IDn fï¿½r den employeen */
 	{		
 		$scope.selectedEmpID = empID;
 		//alert($scope.selectedEmpID );
 	}
 	
-	$scope.changedDepValue = function(depID) /* när man valt en department från DropDown listan */
+	$scope.changedDepValue = function(depID) /* nï¿½r man valt en department frï¿½n DropDown listan */
 	{		
 		$scope.selectedDepID = depID;
 		//alert($scope.selectedDepID);
 	}
 	
-	// För att hämta alla users
+	// Fï¿½r att hï¿½mta alla users
 	function getUsers()
 	{
 		$http.get("https://odz-server.herokuapp.com/api/users"
@@ -156,7 +173,7 @@ app.controller("employeeController", function($scope, dateFilter, $http)
 		 function(response)
 		{
 			console.log(response);
-			$scope.users = response.data; // Visar data från databasen om anropet lyckades
+			$scope.users = response.data; // Visar data frï¿½n databasen om anropet lyckades
 		},
 		function(response)
 		{
@@ -166,7 +183,7 @@ app.controller("employeeController", function($scope, dateFilter, $http)
 		);
 	}
 	
-	// För att hämta alla avdelningar(departments)
+	// Fï¿½r att hï¿½mta alla avdelningar(departments)
 	function getDepartments()
 	{		
 		$http.get("https://odz-server.herokuapp.com/api/departments"
@@ -174,7 +191,7 @@ app.controller("employeeController", function($scope, dateFilter, $http)
 		 function(response)
 		{
 			console.log(response);
-			$scope.departments = response.data; // Visar data från databasen om anropet lyckades
+			$scope.departments = response.data; // Visar data frï¿½n databasen om anropet lyckades
 		},
 		function(response)
 		{
@@ -185,7 +202,7 @@ app.controller("employeeController", function($scope, dateFilter, $http)
 		);
 	}
 	
-	// För att hämta alla events
+	// Fï¿½r att hï¿½mta alla events
 	function getEvents()
 	{		
 		$http.get("https://odz-server.herokuapp.com/api/events"
@@ -193,7 +210,7 @@ app.controller("employeeController", function($scope, dateFilter, $http)
 		 function(response)
 		{
 			console.log(response);
-			$scope.events = response.data; // Visar data från databasen om anropet lyckades
+			$scope.events = response.data; // Visar data frï¿½n databasen om anropet lyckades
 		},
 		function(response)
 		{
@@ -204,9 +221,11 @@ app.controller("employeeController", function($scope, dateFilter, $http)
 		);
 	}
 	
-	// För att tabort ett event med en id
+	// Fï¿½r att tabort ett event med en id
 	$scope.deleteEvents = function(id)
 	{
+		/* gÃ¥ igenom hela arrayen med events och ta bort den med id */
+		
 		$http.delete("https://odz-server.herokuapp.com/api/events/" + id
 		).then(
 		 function(response)
